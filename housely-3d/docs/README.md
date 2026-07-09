@@ -15,7 +15,9 @@ This folder is the control plane for all project documentation.
 - [Documentation Index](index.md)
 - [Table of Contents](toc.md)
 - [Documentation Roadmap](roadmap.md)
+- [Repository Overview](repository-overview.md)
 - [Documentation Standards](standards/documentation-standards.md)
+- [Contribution Guidelines](../CONTRIBUTING.md)
 
 ## Related
 

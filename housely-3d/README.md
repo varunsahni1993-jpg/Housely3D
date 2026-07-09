@@ -6,7 +6,10 @@ This repository is documentation-first. Product decisions, architecture choices,
 ## Start Here
 
 1. Read the [Documentation Index](docs/index.md).
-1. Review the [Documentation Roadmap](docs/roadmap.md).
+1. Review the [Repository Overview](docs/repository-overview.md).
+1. Review the [Contribution Guidelines](CONTRIBUTING.md).
+1. Review the [Handbook Roadmap](book/roadmap.md).
+1. Read the [Founder Constitution](book/volume-01-company/chapter-01-founder-constitution.md).
 1. Use the [Documentation Standards](docs/standards/documentation-standards.md).
 1. Create or update decisions in [decisions](decisions/README.md) using the templates in [templates](templates/README.md).
 
@@ -14,6 +17,7 @@ This repository is documentation-first. Product decisions, architecture choices,
 
 - [book](book/README.md) - engineering handbook and phased volumes.
 - [docs](docs/README.md) - master documentation system.
+- [CONTRIBUTING.md](CONTRIBUTING.md) - contribution and review workflow.
 - [prompts](prompts/README.md) - prompt library structure and governance.
 - [research](research/README.md) - research notes, findings, and experiments.
 - [templates](templates/README.md) - reusable documentation templates.
@@ -31,7 +35,7 @@ This repository is documentation-first. Product decisions, architecture choices,
 ## Documentation Layers
 
 - Strategy: product, architecture, AI, and engineering plans.
-- Standards: markdown style, naming, folder responsibilities, and coding standards structure.
+- Standards: markdown style, naming, folder responsibilities, review guidance, and coding standards structure.
 - Lifecycle: git, branching, versioning, backup, and release strategy.
 - Operations: security, testing, prompt library, and research structure.
 - Handbook: the book volumes under [book](book/README.md).

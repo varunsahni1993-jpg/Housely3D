@@ -1,6 +1,6 @@
-# Handbook Volumes
+# Supplemental Handbook Volumes
 
-The handbook is organized into independent volumes so each area can be reviewed and expanded without forcing the rest of the system to change.
+This folder preserves the earlier expanded handbook scaffold. It is useful as a reference set, but the canonical roadmap now begins with [Volume 01 - Company Constitution](../volume-01-company/README.md).
 
 ## Volume Map
 
@@ -14,4 +14,5 @@ The handbook is organized into independent volumes so each area can be reviewed 
 ## Related
 
 - [Handbook README](../README.md)
+- [Handbook Roadmap](../roadmap.md)
 - [Chapter Template](../../templates/book-chapter-template.md)

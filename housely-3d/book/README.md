@@ -8,16 +8,23 @@ This handbook defines the long-term operating model for Housely-3D.
 - Volumes are independently reviewable.
 - Chapters should use the chapter template and link to the plans or standards they depend on.
 
-## Volumes
+## Primary Entry Points
 
-- [Volume 01 - Foundation](volumes/volume-01-foundation/README.md)
-- [Volume 02 - Product](volumes/volume-02-product/README.md)
-- [Volume 03 - Architecture](volumes/volume-03-architecture/README.md)
-- [Volume 04 - AI Systems](volumes/volume-04-ai-systems/README.md)
-- [Volume 05 - Engineering and Delivery](volumes/volume-05-engineering-and-delivery/README.md)
-- [Volume 06 - Operations and Governance](volumes/volume-06-operations-and-governance/README.md)
+- [Handbook Roadmap](roadmap.md)
+- [Volume 01 - Company Constitution](volume-01-company/README.md)
+
+## Supplemental Handbook Volumes
+
+The following scaffold exists as a secondary handbook set and should be expanded only after the canonical roadmap above is approved.
+
+- [Supplemental Volumes Index](volumes/README.md)
+
+## Canonical Volume
+
+- [Volume 01 - Company Constitution](volume-01-company/README.md)
 
 ## Related
 
 - [Documentation Index](../docs/index.md)
+- [Documentation Roadmap](../docs/roadmap.md)
 - [Book Chapter Template](../templates/book-chapter-template.md)
