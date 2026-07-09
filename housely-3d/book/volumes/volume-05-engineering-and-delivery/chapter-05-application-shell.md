@@ -195,8 +195,111 @@ The shell should be extensible without forcing later teams to refactor the found
 - Sustainable growth.
 - Lower duplication.
 
+## Viewer Architecture
+
+### Purpose
+
+Describe how the 3D viewer foundation is organized so future editing, measurement, and analysis tools can attach without rewriting the rendering core.
+
+### Rationale
+
+The viewer is its own domain. Keeping the engine, scene, controls, camera, and overlay shells separate makes it easier to add specialized tools later while preserving a stable rendering surface.
+
+### Examples
+
+- `src/viewer/providers` for viewer lifecycle, tool registration, and selection context placeholders.
+- `src/viewer/engine` for the React Three Fiber canvas and viewer-level error handling.
+- `src/viewer/scene` for scene composition and shared world setup.
+- `src/viewer/camera` for camera presets, reset logic, and fit-to-scene hooks.
+- `src/viewer/controls` for orbit, future first-person, and orthographic control modes.
+- `src/viewer/components` for overlay shells and status surfaces.
+- `src/viewer/lighting`, `src/viewer/grid`, and `src/viewer/helpers` for reusable scene primitives.
+
+### Scene Hierarchy
+
+### Purpose
+
+Keep the world layout predictable so tools can rely on consistent coordinate space and camera behavior.
+
+### Rationale
+
+Rendering features should compose around a shared scene root rather than mutating ad hoc objects from arbitrary components.
+
+### Examples
+
+- Scene root initializes ambient, hemisphere, and directional lighting.
+- Ground plane and reference grid define a stable origin.
+- Axes helper appears only in development builds.
+- Fog is optional and centralized.
+
+### Camera Architecture
+
+### Purpose
+
+Provide a single place for default positioning, reset behavior, and future camera presets.
+
+### Rationale
+
+Camera state should be reusable from tool commands rather than embedded in individual scene objects.
+
+### Examples
+
+- Default perspective camera lives in the viewer canvas configuration.
+- A camera rig applies the active preset and keeps the projection matrix current.
+- Resetting the camera returns to the default preset.
+- Fit-to-scene is a placeholder for later bounds-aware behavior.
+
+### Control Architecture
+
+### Purpose
+
+Keep navigation predictable while leaving room for alternate control modes.
+
+### Rationale
+
+Orbit controls are the default interaction model, but the control layer should be isolated so first-person and orthographic modes can be introduced later without changing the canvas contract.
+
+### Examples
+
+- Damped orbit interaction.
+- Sensible min and max distance limits.
+- Pan, zoom, and rotate enabled by default.
+- `makeDefault` control registration for future replacement.
+
+### Guidelines For Future Rendering Features
+
+### Purpose
+
+Define the guardrails for viewer enhancements.
+
+### Rationale
+
+Future tools should register through the provider and render in their own domain folders instead of expanding the canvas component directly.
+
+### Examples
+
+- Add new tools through provider registration and shell panels.
+- Keep scene primitives memoized and stateless when possible.
+- Dispose resources through React Three Fiber lifecycles.
+- Prefer narrow, composable components over a single large viewer implementation.
+- Keep non-rendering state in provider or hook layers.
+
+### Deferred Work
+
+The following work is intentionally postponed:
+
+- Selection system.
+- Transform gizmos.
+- Object snapping.
+- Measurement tools.
+- Undo and redo.
+- Section cuts.
+- Minimap.
+- Physics.
+- Level of detail system.
+- Asset streaming.
+
 ## Related
 
 - [Volume 05 README](README.md)
 - [Handbook Roadmap](../../roadmap.md)
-- [Application Backlog](../../../docs/backlog.md)

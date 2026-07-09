@@ -1,7 +1,6 @@
-import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { EmptyState, PageHeader, SectionCard } from '@/components';
+import { PageHeader, SectionCard } from '@/components';
+import { ViewerProvider, ViewerWorkspace } from '@/viewer';
 
 export default function ViewerPage() {
   return (
@@ -9,21 +8,13 @@ export default function ViewerPage() {
       <PageHeader
         eyebrow="Visualization"
         title="Viewer"
-        description="The Three.js and React Three Fiber viewer will be added later. This shell reserves the route and layout space now."
+        description="The production viewer foundation is now in place with a modular R3F canvas, reusable camera and control layers, and empty shells for future tools."
       />
 
-      <SectionCard title="Model preview shell" description="Reserved for 3D and geometry-driven experiences.">
-        <EmptyState
-          icon={<VisibilityRoundedIcon fontSize="large" />}
-          title="Viewer implementation is deferred"
-          description="The viewer route is ready, but rendering, loading, and interaction logic are intentionally not implemented in this phase."
-        />
-      </SectionCard>
-
-      <SectionCard title="Design notes">
-        <Typography variant="body2" color="text.secondary">
-          Future viewer features should remain isolated inside the viewer domain so the shell can evolve without coupling to geometry logic.
-        </Typography>
+      <SectionCard title="Viewer workspace" description="Canvas, scene scaffolding, and overlay shells are initialized here.">
+        <ViewerProvider>
+          <ViewerWorkspace />
+        </ViewerProvider>
       </SectionCard>
     </Stack>
   );

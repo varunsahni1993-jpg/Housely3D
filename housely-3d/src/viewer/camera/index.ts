@@ -1,0 +1,1 @@
+export { ViewerCameraRig } from './ViewerCameraRig';

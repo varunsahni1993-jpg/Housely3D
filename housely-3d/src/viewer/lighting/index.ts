@@ -1,0 +1,1 @@
+export { ViewerLighting } from './ViewerLighting';
