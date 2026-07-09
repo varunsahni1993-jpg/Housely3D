@@ -1,10 +1,10 @@
-import type { ElementType } from 'react';
+import type { ComponentType } from 'react';
 
 export interface NavigationItem {
   label: string;
   path: string;
   description: string;
-  icon: ElementType;
+  icon: ComponentType<{ fontSize?: 'inherit' | 'small' | 'medium' | 'large' }>;
 }
 
 export interface BreadcrumbItem {

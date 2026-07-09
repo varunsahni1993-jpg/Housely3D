@@ -7,6 +7,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { navigationItems } from '@/router';
 import { appConfig } from '@/services';
@@ -24,6 +27,7 @@ export function Sidebar({ desktop }: SidebarProps) {
   const isCollapsed = useSidebarStore((state) => state.isCollapsed);
   const isMobileOpen = useSidebarStore((state) => state.isMobileOpen);
   const closeMobile = useSidebarStore((state) => state.closeMobile);
+  const toggleCollapsed = useSidebarStore((state) => state.toggleCollapsed);
 
   const drawerWidthValue = desktop && isCollapsed ? collapsedWidth : drawerWidth;
 
@@ -57,6 +61,16 @@ export function Sidebar({ desktop }: SidebarProps) {
                 Application shell
               </Typography>
             </Box>
+          ) : null}
+          {desktop ? (
+            <IconButton
+              size="small"
+              onClick={toggleCollapsed}
+              sx={{ ml: 'auto' }}
+              aria-label={isCollapsed ? 'expand sidebar' : 'collapse sidebar'}
+            >
+              {isCollapsed ? <ChevronRightRoundedIcon fontSize="small" /> : <ChevronLeftRoundedIcon fontSize="small" />}
+            </IconButton>
           ) : null}
         </Stack>
       </Box>
@@ -113,9 +127,14 @@ export function Sidebar({ desktop }: SidebarProps) {
       <Box sx={{ mt: 'auto', px: 2.5, pb: 2.5 }}>
         <Divider sx={{ mb: 2 }} />
         {!desktop || !isCollapsed ? (
-          <Typography variant="caption" color="text.secondary">
-            Designed for structured delivery, traceability, and future scaling.
-          </Typography>
+          <Stack spacing={0.75}>
+            <Typography variant="caption" color="text.secondary">
+              Designed for structured delivery, traceability, and future scaling.
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              Version {appConfig.appVersion}
+            </Typography>
+          </Stack>
         ) : null}
       </Box>
     </Stack>

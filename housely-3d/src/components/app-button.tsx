@@ -1,5 +1,9 @@
 import Button, { type ButtonProps } from '@mui/material/Button';
 
-export function AppButton(props: ButtonProps) {
+type AppButtonProps = ButtonProps & {
+  to?: string;
+};
+
+export function AppButton(props: AppButtonProps) {
   return <Button disableElevation {...props} />;
 }

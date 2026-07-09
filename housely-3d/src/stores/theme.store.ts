@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { appConfig } from '@/services';
 import type { ThemeMode } from '@/types';
 
 interface ThemeState {
@@ -11,7 +12,7 @@ interface ThemeState {
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
-      mode: 'light',
+      mode: appConfig.defaultThemeMode,
       setMode: (mode) => set({ mode }),
       toggleMode: () =>
         set((state) => ({

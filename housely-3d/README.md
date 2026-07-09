@@ -6,6 +6,7 @@ This repository is documentation-first. Product decisions, architecture choices,
 ## Start Here
 
 1. Read the [Documentation Index](docs/index.md).
+1. Review the [Application Backlog](docs/backlog.md).
 1. Review the [Repository Overview](docs/repository-overview.md).
 1. Review the [Contribution Guidelines](CONTRIBUTING.md).
 1. Review the [Handbook Roadmap](book/roadmap.md).

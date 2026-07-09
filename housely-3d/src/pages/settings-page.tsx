@@ -68,7 +68,12 @@ export default function SettingsPage() {
     ],
   );
 
-  const { control, handleSubmit, register, reset, formState: { errors, isDirty, isSubmitting } } = useForm<SettingsFormValues>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isDirty, isSubmitting },
+  } = useForm<SettingsFormValues>({
     defaultValues,
     resolver: zodResolver(settingsSchema),
     mode: 'onBlur',
@@ -129,67 +134,94 @@ export default function SettingsPage() {
         <Stack component="form" spacing={3} onSubmit={onSubmit}>
           <Grid container spacing={2.5}>
             <Grid item xs={12} md={6}>
-              <AppTextField
-                label="Workspace name"
-                error={Boolean(errors.workspaceName)}
-                helperText={errors.workspaceName?.message}
-                {...register('workspaceName')}
+              <Controller
+                control={control}
+                name="workspaceName"
+                render={({ field, fieldState }) => (
+                  <AppTextField
+                    {...field}
+                    label="Workspace name"
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <AppSelect
-                label="Default landing page"
-                select
-                error={Boolean(errors.landingPage)}
-                helperText={errors.landingPage?.message}
-                {...register('landingPage')}
-                SelectProps={{ native: true }}
-              >
-                {landingPageOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </AppSelect>
+              <Controller
+                control={control}
+                name="landingPage"
+                render={({ field, fieldState }) => (
+                  <AppSelect
+                    {...field}
+                    label="Default landing page"
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                    SelectProps={{ native: true }}
+                  >
+                    {landingPageOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </AppSelect>
+                )}
+              />
             </Grid>
             <Grid item xs={12} md={6}>
-              <AppSelect
-                label="Content density"
-                select
-                error={Boolean(errors.density)}
-                helperText={errors.density?.message}
-                {...register('density')}
-                SelectProps={{ native: true }}
-              >
-                {densityOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </AppSelect>
+              <Controller
+                control={control}
+                name="density"
+                render={({ field, fieldState }) => (
+                  <AppSelect
+                    {...field}
+                    label="Content density"
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                    SelectProps={{ native: true }}
+                  >
+                    {densityOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </AppSelect>
+                )}
+              />
             </Grid>
             <Grid item xs={12} md={6}>
-              <AppSelect
-                label="Theme mode"
-                select
-                error={Boolean(errors.themeMode)}
-                helperText={errors.themeMode?.message}
-                {...register('themeMode')}
-                SelectProps={{ native: true }}
-              >
-                {themeOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </AppSelect>
+              <Controller
+                control={control}
+                name="themeMode"
+                render={({ field, fieldState }) => (
+                  <AppSelect
+                    {...field}
+                    label="Theme mode"
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                    SelectProps={{ native: true }}
+                  >
+                    {themeOptions.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </AppSelect>
+                )}
+              />
             </Grid>
             <Grid item xs={12} md={6}>
-              <AppTextField
-                label="Preferred language"
-                error={Boolean(errors.preferredLanguage)}
-                helperText={errors.preferredLanguage?.message}
-                {...register('preferredLanguage')}
+              <Controller
+                control={control}
+                name="preferredLanguage"
+                render={({ field, fieldState }) => (
+                  <AppTextField
+                    {...field}
+                    label="Preferred language"
+                    error={Boolean(fieldState.error)}
+                    helperText={fieldState.error?.message}
+                  />
+                )}
               />
             </Grid>
           </Grid>

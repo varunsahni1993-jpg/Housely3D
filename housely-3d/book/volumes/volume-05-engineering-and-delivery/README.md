@@ -10,6 +10,7 @@ Define how engineering work is organized, implemented, and verified.
 - [Chapter 02 - Coding Standards](chapter-02-coding-standards.md) - expected output: implementation quality rules.
 - [Chapter 03 - Testing and Quality](chapter-03-testing-and-quality.md) - expected output: verification strategy.
 - [Chapter 04 - Development Lifecycle](chapter-04-development-lifecycle.md) - expected output: delivery workflow.
+- [Chapter 05 - Application Shell](chapter-05-application-shell.md) - expected output: frontend shell architecture.
 
 ## Related
 

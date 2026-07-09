@@ -73,7 +73,6 @@ export function TopNavigationBar({ onMenuClick }: TopNavigationBarProps) {
           variant="outlined"
           startIcon={mode === 'light' ? <DarkModeRoundedIcon /> : <LightModeRoundedIcon />}
           onClick={toggleMode}
-          sx={{ display: { xs: 'none', sm: 'inline-flex' } }}
         >
           {mode === 'light' ? 'Dark mode' : 'Light mode'}
         </AppButton>

@@ -155,12 +155,14 @@ Define delivery practices, coding standards, testing, and lifecycle rules.
 - Chapter 02 - Coding standards.
 - Chapter 03 - Testing and quality.
 - Chapter 04 - Development lifecycle.
+- Chapter 05 - Application shell.
 
 ### Dependencies
 
 - Architecture guidance.
 - Testing structure.
 - Lifecycle strategy.
+- Application shell documentation.
 
 ### Deliverables
 
@@ -175,8 +177,10 @@ Define delivery practices, coding standards, testing, and lifecycle rules.
 ### Review Checkpoints
 
 - Engineering review.
+- Frontend architecture review.
 - QA review.
 - Release readiness review.
+- Founder approval.
 
 ## Volume 06 - Operations and Governance
 

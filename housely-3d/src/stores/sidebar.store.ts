@@ -20,6 +20,9 @@ export const useSidebarStore = create<SidebarState>()(
     }),
     {
       name: 'housely-3d-sidebar',
+      partialize: (state) => ({
+        isCollapsed: state.isCollapsed,
+      }),
     },
   ),
 );
