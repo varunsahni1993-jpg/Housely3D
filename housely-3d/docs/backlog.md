@@ -7,15 +7,26 @@ Track intentionally deferred work so the shell stays focused while the product r
 ## Deferred Work
 
 - Authentication.
-- Project CRUD.
-- Three.js viewer.
-- Asset library.
+- Backend API.
+- PostgreSQL.
+- Redis.
 - AI services.
-- Backend integration.
+- Floor-plan upload.
+- Advanced room geometry.
+- Walls.
+- Doors.
+- Windows.
+- Materials.
+- Undo and redo.
+- Collaboration.
+- Cloud sync.
+- Asset library.
 - Notifications.
 - Command palette.
 - Internationalization.
 - Offline support.
+- Transform gizmos.
+- Measurement tools.
 
 ## Usage Rules
 

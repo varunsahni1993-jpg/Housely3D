@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unknown-property */
+import type { PropsWithChildren } from 'react';
 import { memo } from 'react';
 import { ViewerAxesHelper } from '@/viewer/helpers';
 import { ViewerGrid } from '@/viewer/grid';
 import { ViewerLighting } from '@/viewer/lighting';
 import { VIEWER_FOG } from '@/viewer/utils/viewer-constants';
 
-export const SceneRoot = memo(function SceneRoot() {
+export const SceneRoot = memo(function SceneRoot({ children }: PropsWithChildren) {
   return (
     <>
       <color attach="background" args={['#0b1020']} />
@@ -17,6 +18,7 @@ export const SceneRoot = memo(function SceneRoot() {
       </mesh>
       <ViewerGrid />
       <ViewerAxesHelper />
+      {children}
     </>
   );
 });

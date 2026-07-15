@@ -1,6 +1,6 @@
 import type { BreadcrumbItem, NavigationItem } from '@/types';
 
-export function toBreadcrumbItems(pathname: string, navigationItems: NavigationItem[]): BreadcrumbItem[] {
+export function toBreadcrumbItems(pathname: string, navigationItems: NavigationItem[], projectName?: string): BreadcrumbItem[] {
   const matchedItem = navigationItems.find((item) => item.path === pathname);
 
   if (matchedItem) {
@@ -18,6 +18,14 @@ export function toBreadcrumbItems(pathname: string, navigationItems: NavigationI
     return [
       { label: 'Home', path: '/' },
       { label: '404' },
+    ];
+  }
+
+  if (pathname.startsWith('/projects/')) {
+    return [
+      { label: 'Home', path: '/' },
+      { label: 'Projects', path: '/projects' },
+      { label: projectName ?? 'Project workspace' },
     ];
   }
 

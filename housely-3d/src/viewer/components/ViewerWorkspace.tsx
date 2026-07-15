@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import type { ReactNode } from 'react';
 import { ViewerCanvas } from '@/viewer/engine';
 import { useViewer } from '@/viewer/hooks';
 import { ViewerShell } from './ViewerShell';
@@ -14,13 +15,37 @@ function PlaceholderCopy({ text }: { text: string }) {
   );
 }
 
-export function ViewerWorkspace() {
+interface ViewerWorkspaceProps {
+  toolbar?: ReactNode;
+  leftPanel?: ReactNode;
+  rightPanel?: ReactNode;
+  bottomPanel?: ReactNode;
+  scene?: ReactNode;
+  statusContent?: ReactNode;
+  toolbarTitle?: string;
+  leftPanelTitle?: string;
+  rightPanelTitle?: string;
+  bottomPanelTitle?: string;
+}
+
+export function ViewerWorkspace({
+  toolbar,
+  leftPanel,
+  rightPanel,
+  bottomPanel,
+  scene,
+  statusContent,
+  toolbarTitle = 'Toolbar',
+  leftPanelTitle = 'Scene tree',
+  rightPanelTitle = 'Inspector',
+  bottomPanelTitle = 'Properties panel',
+}: ViewerWorkspaceProps) {
   const { state } = useViewer();
 
   return (
     <Stack spacing={2}>
-      <ViewerShell title="Toolbar" description="Reserved for viewer actions, scene modes, and future tools." minHeight={112}>
-        <PlaceholderCopy text="Tool registration and command wiring will live here." />
+      <ViewerShell title={toolbarTitle} description="Reserved for viewer actions, scene modes, and future tools." minHeight={112}>
+        {toolbar ?? <PlaceholderCopy text="Tool registration and command wiring will live here." />}
       </ViewerShell>
 
       <Box
@@ -34,21 +59,21 @@ export function ViewerWorkspace() {
           alignItems: 'stretch',
         }}
       >
-        <ViewerShell title="Scene tree" description="Placeholder for hierarchical scene navigation." minHeight={240}>
-          <PlaceholderCopy text="Selection context currently reports no active objects." />
+        <ViewerShell title={leftPanelTitle} description="Placeholder for hierarchical scene navigation." minHeight={240}>
+          {leftPanel ?? <PlaceholderCopy text="Selection context currently reports no active objects." />}
         </ViewerShell>
 
         <Box sx={{ minWidth: 0 }}>
-          <ViewerCanvas />
+          <ViewerCanvas scene={scene} />
         </Box>
 
-        <ViewerShell title="Inspector" description="Reserved for object metadata and contextual inspection." minHeight={240}>
-          <PlaceholderCopy text={`Viewer status: ${state.status}.`} />
+        <ViewerShell title={rightPanelTitle} description="Reserved for object metadata and contextual inspection." minHeight={240}>
+          {rightPanel ?? <PlaceholderCopy text={`Viewer status: ${state.status}.`} />}
         </ViewerShell>
       </Box>
 
-      <ViewerShell title="Properties panel" description="Future property editors can register here without changing the canvas." minHeight={160}>
-        <PlaceholderCopy text="No editable properties are available in the foundation phase." />
+      <ViewerShell title={bottomPanelTitle} description="Future property editors can register here without changing the canvas." minHeight={160}>
+        {bottomPanel ?? <PlaceholderCopy text="No editable properties are available in the foundation phase." />}
       </ViewerShell>
 
       <Box
@@ -71,6 +96,7 @@ export function ViewerWorkspace() {
           <Typography variant="body2" color="text.secondary">
             Selected objects: {state.selection.selectedIds.length}
           </Typography>
+          {statusContent}
         </Stack>
       </Box>
     </Stack>

@@ -74,6 +74,7 @@ Route-level code splitting keeps the initial shell light and lets each surface e
 ### Examples
 
 - Home, dashboard, projects, viewer, settings, and not-found routes.
+- Project workspace route under `/projects/:projectId`.
 - Lazy-loaded page modules.
 - Route fallback for unknown paths.
 
@@ -214,6 +215,7 @@ The viewer is its own domain. Keeping the engine, scene, controls, camera, and o
 - `src/viewer/controls` for orbit, future first-person, and orthographic control modes.
 - `src/viewer/components` for overlay shells and status surfaces.
 - `src/viewer/lighting`, `src/viewer/grid`, and `src/viewer/helpers` for reusable scene primitives.
+- `src/features/projects` for the project domain, repository, workspace store, and scene adapter.
 
 ### Scene Hierarchy
 
@@ -231,6 +233,8 @@ Rendering features should compose around a shared scene root rather than mutatin
 - Ground plane and reference grid define a stable origin.
 - Axes helper appears only in development builds.
 - Fog is optional and centralized.
+- Domain features provide scene children through the viewer canvas instead of mutating the engine directly.
+- Room meshes are derived from project state, not from duplicate viewer state.
 
 ### Camera Architecture
 
@@ -283,6 +287,7 @@ Future tools should register through the provider and render in their own domain
 - Dispose resources through React Three Fiber lifecycles.
 - Prefer narrow, composable components over a single large viewer implementation.
 - Keep non-rendering state in provider or hook layers.
+- Keep project data in the domain store and repository, not in Three.js objects.
 
 ### Deferred Work
 

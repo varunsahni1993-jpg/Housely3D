@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import { Canvas } from '@react-three/fiber';
 import { AdaptiveDpr } from '@react-three/drei';
+import type { ReactNode } from 'react';
 import { Suspense, useEffect } from 'react';
 import { PCFSoftShadowMap } from 'three';
 import { SceneRoot } from '@/viewer/scene';
@@ -10,7 +11,11 @@ import { useViewer } from '@/viewer/hooks';
 import { ViewerErrorBoundary } from './ViewerErrorBoundary';
 import { ViewerLoadingState } from '@/viewer/components/ViewerLoadingState';
 
-export function ViewerCanvas() {
+interface ViewerCanvasProps {
+  scene?: ReactNode;
+}
+
+export function ViewerCanvas({ scene }: ViewerCanvasProps) {
   const { setStatus } = useViewer();
 
   useEffect(() => {
@@ -59,7 +64,7 @@ export function ViewerCanvas() {
           <AdaptiveDpr pixelated />
           <Suspense fallback={<ViewerLoadingState />}>
             <ViewerCameraRig />
-            <SceneRoot />
+            <SceneRoot>{scene}</SceneRoot>
             <ViewerOrbitControls />
           </Suspense>
         </Canvas>
